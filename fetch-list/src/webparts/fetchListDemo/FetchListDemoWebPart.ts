@@ -8,7 +8,9 @@ import {
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 
 import * as strings from "FetchListDemoWebPartStrings";
-import { FetchListDemo, FetchListDemoProps } from "./components/FetchListDemo";
+import FetchListDemo, {
+  FetchListDemoProps,
+} from "./components/FetchListDemo/FetchListDemo";
 
 export interface IFetchListDemoWebPartProps {
   description: string;

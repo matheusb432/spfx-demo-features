@@ -1,5 +1,5 @@
 const arrayToPnpQueryableArgs = (arr: string[]): string => {
-  if (!arr?.length) return "";
+  if (!arr || !arr.length) return "";
 
   return arr.join(", ");
 };

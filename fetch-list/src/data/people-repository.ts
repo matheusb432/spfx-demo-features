@@ -19,11 +19,14 @@ export default class PeopleRepo {
   }
 
   public async getPeople(opt?: PnpQueryOptions): Promise<Person[]> {
-    opt ??= {
-      select: ["Id", "Name", "Age"],
-      top: 10,
-      skip: 0,
-    };
+    opt =
+      opt == null
+        ? {
+            select: ["Id", "Name", "Age"],
+            top: 10,
+            skip: 0,
+          }
+        : opt;
 
     const people = await this._repo.getItems(opt);
 

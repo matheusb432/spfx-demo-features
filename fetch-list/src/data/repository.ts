@@ -2,7 +2,6 @@ import { sp, Web } from "@pnp/sp";
 import { PnpQueryOptions } from "../types";
 import { arrayToPnpQueryableArgs, safeDestructure } from "../util";
 
-// export default class Repository<T> {
 export default class Repository<T> {
   private _listName: string;
   private _web: Web;
@@ -19,7 +18,9 @@ export default class Repository<T> {
 
     if (select) items.select(arrayToPnpQueryableArgs(select));
     if (filter) items.filter(filter);
-    if (orderby) items.orderBy(orderby.field, orderby.asc ?? true);
+    if (orderby) {
+      items.orderBy(orderby.field, orderby.asc == null ? true : orderby.asc);
+    }
     if (expand) items.expand(...expand);
     if (top) items.top(top);
     if (skip) items.skip(skip);
@@ -32,6 +33,6 @@ export default class Repository<T> {
       .getByTitle(this._listName)
       .items.add(item);
 
-    return newItem as T;
+    return newItem as unknown as T;
   }
 }

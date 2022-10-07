@@ -1,5 +1,6 @@
 import * as React from "react";
 import PeopleRepo from "../../../../data/people-repository";
+import { mockPeople } from "../../../../util/mock-data";
 import { PersonList } from "../PersonList/PersonList";
 import styles from "./style.module.scss";
 
@@ -10,7 +11,8 @@ interface FetchListDemoProps {
 const peopleRepo = PeopleRepo.instance;
 
 const FetchListDemo = ({}: FetchListDemoProps) => {
-  const [people, setPeople] = React.useState([]);
+  // TODO remove mock data
+  const [people, setPeople] = React.useState(mockPeople);
 
   const handleFetchData = async () => {
     const people = await peopleRepo.getPeople();
@@ -41,4 +43,4 @@ const FetchListDemo = ({}: FetchListDemoProps) => {
 };
 
 export default FetchListDemo;
-export type { FetchListDemoProps };
+export { FetchListDemoProps };
