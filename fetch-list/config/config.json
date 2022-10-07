@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "fetch-list-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/fetchListDemo/FetchListDemoWebPart.js",
+          "manifest": "./src/webparts/fetchListDemo/FetchListDemoWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "FetchListDemoWebPartStrings": "lib/webparts/fetchListDemo/loc/{locale}.js"
+  }
+}
