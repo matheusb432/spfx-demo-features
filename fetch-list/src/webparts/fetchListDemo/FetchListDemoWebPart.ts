@@ -5,18 +5,30 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
 } from "@microsoft/sp-property-pane";
-import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import {
+  BaseClientSideWebPart,
+  WebPartContext,
+} from "@microsoft/sp-webpart-base";
 
 import * as strings from "FetchListDemoWebPartStrings";
 import FetchListDemo, {
   FetchListDemoProps,
 } from "./components/FetchListDemo/FetchListDemo";
+import { sp } from "@pnp/sp";
 
 export interface IFetchListDemoWebPartProps {
   description: string;
 }
 
 export default class FetchListDemoWebPart extends BaseClientSideWebPart<IFetchListDemoWebPartProps> {
+  constructor(context: WebPartContext) {
+    super();
+
+    sp.setup({
+      spfxContext: context,
+    });
+  }
+
   public render(): void {
     const element: React.ReactElement<FetchListDemoProps> = React.createElement(
       FetchListDemo,

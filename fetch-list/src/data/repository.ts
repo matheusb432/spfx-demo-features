@@ -7,6 +7,8 @@ export default class Repository<T> {
   private _web: Web;
 
   constructor(listName: string) {
+    if (!sp || sp.web == null) throw new Error("sp.web is null");
+
     this._listName = listName;
     this._web = sp.web;
   }
